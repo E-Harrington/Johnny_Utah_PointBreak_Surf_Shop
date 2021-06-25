@@ -31,8 +31,9 @@ Eric Harrington
 
 9: Define MakePurchase() using reference variables, and within function declare
    and initialize an int variable and a char variable that will be assigned to
-   the user's input for board quantity and board type; use if statements to update
-   board corresponding board total based on user input
+   the user's input for board quantity and board type; set up a while loop to correct
+   invalid user input; use if statements to update board corresponding board total
+   based on successful user input
 
 10: Define DisplayPurchase() using an if-else statement; the if statement should check
    whether any of the board quantities is greater than zero; if any are, then use if
@@ -60,7 +61,6 @@ Eric Harrington
 
 #include<iostream>
 #include<iomanip>
-#include<cmath>
 #include<string>
 #include<cctype>
 
@@ -173,6 +173,16 @@ void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
     cout << "Please enter the quantity and type (S=small, M=medium, L=large)"
         << " of surfboard you \nwould like to purchase: ";
     cin >> boardSelectionQuantity >> boardSelectionSize;
+
+    while (!cin)
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << endl << "Invalid input:" << endl;
+        cout << "Please enter the quantity and type (S=small, M=medium, L=large)"
+            << " of surfboard you \nwould like to purchase: ";
+        cin >> boardSelectionQuantity >> boardSelectionSize;
+    }
 
     boardSelectionSize = toupper(boardSelectionSize);
 
