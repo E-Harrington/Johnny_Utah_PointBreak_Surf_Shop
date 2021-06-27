@@ -1,30 +1,29 @@
 /*******************************************************************************
 Week05 Programming Assignment
 Eric Harrington
-********************************************************************************
 
 ***********************Before main()********************************************
-1: Declare constant doubles for surf board costs
+1: Declare constant doubles for surfboard costs
 
 2: Declare prototype functions
 
 ***********************Within main()*********************************************
-3: Declare char userInput, which will be used as a sentinel variable; initialize
-   it to a character that is not 'Q'
+3: Declare char variable userInput, which will be used as a sentinel variable; 
+   initialize it to a character that is not 'Q'
 
 4: Declare 3 int variables to keep track of the number of small, medium, and large
    surfboards that have been purchased
 
 5: Set up a while loop that runs while char userInput does not equal "q" and place
    a prompt for user input at beginning of while loop; after the cin statement,
-   set the char sentinel to lower case using toupper()
+   set the char sentinel to uppercase using toupper()
 
 6: Set up an "if...else-if" structure that calls functions if the user enters
-   the corresponding character
+   the corresponding character; for now, just set up the conditions
 
 **************************After main()*******************************************
 7: Define ShowTitle() by declaring and initializing a string variable for the
-   title and an in variable for the program width, and use these variables to
+   title and an int variable for the program width, and use these variables to
    help format cout statements
 
 8: Define Show usage via a series of cout statements that match assignment example
@@ -32,23 +31,23 @@ Eric Harrington
 9: Define MakePurchase() using reference variables, and within function declare
    and initialize an int variable and a char variable that will be assigned to
    the user's input for board quantity and board type; set up a while loop to correct
-   invalid user input; use if statements to update board corresponding board total
-   based on successful user input
+   invalid user input; use if statements to update corresponding board total based
+   on successful user input
 
 10: Define DisplayPurchase() using an if-else statement; the if statement should check
    whether any of the board quantities is greater than zero; if any are, then use if
    statements to check each board total and display that board's total if the board total
-   is greater than zero; withing the else statement, use cout to display that no purchases
+   is greater than zero; within the else statement, use cout to display that no purchases
    have been made;
 
 
-11: Define DisplayTotal() use "cout << fixed << setprecision(2) << showpoint" to format
-    output for displaying money; declare a double variable for the total amount of money
-    earned from board sales and initialize it to zero; set up an if-else statement;
-    the if statement should check whether any of the board quantities is greater than
-    zero; if any are, then use if statements to check each boards quantity and display
-    the quantity of that board; last, assign the value of the totalSales variable to
-    the sum of the quantity of boards times their prices;
+11: Define DisplayTotal(): use "cout << fixed << setprecision(2) << showpoint" to format
+    output for displaying money; declare a double variable totalSales to track the total
+    amount of money earned from board sales and initialize it to zero; set up an if-else
+    statement; the if statement should check whether any of the board quantities is greater
+    than zero; if any are, then use if statements to check each boards quantity and display
+    the quantity of that board; last, assign the value of the totalSales variable to the 
+    sum of the quantity of boards times their prices;
 
 12: Define ClosingMessage() using a cout statement and iomanip's system("pause") function
 
@@ -83,7 +82,7 @@ void ShowUsage();
 //A function to sell surfboards
 void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge);
 
-//Function to show the number of surfboards of each size sold
+//A function to show the number of surfboards of each size sold
 void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
 
 //A Function to show the total amount of money made
@@ -144,13 +143,14 @@ void ShowTitle()
 {
     const string TITLE = "Welcome to my Johnny Utah's PointBreak Surf Shop";
     unsigned __int64 progWidth = 60;
+    cout << setfill('*');
 
-    cout << setw(progWidth) << setfill('*') << " " << endl;
+    cout << setw(progWidth) << " " << endl;
 
-    cout << setw(progWidth / 2 + TITLE.length() / 2) << setfill('*') << TITLE
-        << setw(progWidth - (progWidth / 2 + TITLE.length() / 2)) << setfill('*') << " " << endl;
+    cout << setw(progWidth / 2 + TITLE.length() / 2) << TITLE
+        << setw(progWidth - (progWidth / 2 + TITLE.length() / 2)) << " " << endl;
 
-    cout << setw(progWidth) << setfill('*') << " " << endl;
+    cout << setw(progWidth) << " " << endl;
 
 }
 
