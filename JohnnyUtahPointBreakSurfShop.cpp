@@ -6,12 +6,12 @@ Eric Harrington
 1: Declare prototype functions
 
 ***********************Within main()*********************************************
-2: Declare 3 const doubles for board prices
+2: Declare 4 const doubles for board prices 
 
 3: Declare char variable userInput, which will be used as a sentinel variable; 
    initialize it to a character that is not 'Q'
 
-4: Declare 3 int variables to keep track of the number of small, medium, and large
+4: Declare 4 int variables to keep track of the number of small, medium, and large
    surfboards that have been purchased
 
 5: Set up a while loop that runs while char userInput does not equal "q" and place
@@ -76,13 +76,13 @@ void ShowTitle();
 void ShowUsage();
 
 //A function to sell surfboards
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge);
+void MakePurchase(int& iTotalXXXS, int& iTotalSmall, int& iTotalMedium, int& iTotalLarge);
 
 //A function to show the number of surfboards of each size sold
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
+void DisplayPurchase(const int iTotalXXXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge);
 
 //A Function to show the total amount of money made
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge, const double, const double, const double);
+void DisplayTotal(const int iTotalXXXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge, const double, const double, const double, const double);
 
 //A function to display closing message
 void ClosingMessage();
@@ -92,6 +92,7 @@ void ClosingMessage();
 int main()
 {
     //Step2
+    const double XXXS_BOARD_PRICE = 25.00;
     const double SMALL_BOARD_PRICE = 175.00;
     const double MEDIUM_BOARD_PRICE = 190.00;
     const double LARGE_BOARD_PRICE = 200.00;
@@ -100,6 +101,7 @@ int main()
     char userInput = 'y';
 
     //Step 4
+    int iTotalXXXS = 0;
     int iTotalSmall = 0;
     int iTotalMedium = 0;
     int iTotalLarge = 0;
@@ -122,13 +124,13 @@ int main()
             ShowUsage();//Step 13
 
         else if (userInput == 'P')
-            MakePurchase(iTotalSmall, iTotalMedium, iTotalLarge);//Step 13
+            MakePurchase(iTotalXXXS, iTotalSmall, iTotalMedium, iTotalLarge);//Step 13
 
         else if (userInput == 'C')
-            DisplayPurchase(iTotalSmall, iTotalMedium, iTotalLarge);//Step 13
+            DisplayPurchase(iTotalXXXS, iTotalSmall, iTotalMedium, iTotalLarge);//Step 13
 
         else if (userInput == 'T')
-            DisplayTotal(iTotalSmall, iTotalMedium, iTotalLarge, SMALL_BOARD_PRICE, MEDIUM_BOARD_PRICE, LARGE_BOARD_PRICE);//Step 13
+            DisplayTotal(iTotalXXXS, iTotalSmall, iTotalMedium, iTotalLarge, XXXS_BOARD_PRICE, SMALL_BOARD_PRICE, MEDIUM_BOARD_PRICE, LARGE_BOARD_PRICE);//Step 13
     }
 
     ClosingMessage();//Step 13
@@ -166,12 +168,12 @@ void ShowUsage()
 }
 
 //Step 9
-void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
+void MakePurchase(int& iTotalXXXS, int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
 {
     int boardSelectionQuantity = 0;
     char boardSelectionSize = ' ';
 
-    cout << "Please enter the quantity and type (S=small, M=medium, L=large)"
+    cout << "Please enter the quantity and type (X=XXXS Squirrel, S=small, M=medium, L=large)"
         << " of surfboard you \nwould like to purchase: ";
     cin >> boardSelectionQuantity >> boardSelectionSize;
 
@@ -187,7 +189,10 @@ void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
 
     boardSelectionSize = toupper(boardSelectionSize);
 
-    if (boardSelectionSize == 'S')
+    if (boardSelectionSize == 'X')
+        iTotalXXXS += boardSelectionQuantity;
+
+    else if (boardSelectionSize == 'S')
         iTotalSmall += boardSelectionQuantity;
 
     else if (boardSelectionSize == 'M')
@@ -196,15 +201,20 @@ void MakePurchase(int& iTotalSmall, int& iTotalMedium, int& iTotalLarge)
     else if (boardSelectionSize == 'L')
         iTotalLarge += boardSelectionQuantity;
 
+    
+
     cout << endl << endl;
 
 }
 
 //Step 10
-void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
+void DisplayPurchase(const int iTotalXXXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge)
 {
-    if (iTotalSmall > 0 || iTotalMedium > 0 || iTotalLarge > 0)
+    if (iTotalXXXS > 0 || iTotalSmall > 0 || iTotalMedium > 0 || iTotalLarge > 0)
     {
+        if (iTotalXXXS > 0)
+            cout << "The total number of XXXS Squirrel boards is " << iTotalXXXS << endl;
+
         if (iTotalSmall > 0)
             cout << "The total number of small surfboards is " << iTotalSmall << endl;
 
@@ -225,14 +235,19 @@ void DisplayPurchase(const int iTotalSmall, const int iTotalMedium, const int iT
 }
 
 //Step 11
-void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTotalLarge, const double smallPrice, const double mediumPrice, const double largePrice)
+void DisplayTotal(const int iTotalXXXS, const int iTotalSmall, const int iTotalMedium, const int iTotalLarge, const double xxxsPrice, const double smallPrice, const double mediumPrice, const double largePrice)
 {
     cout << fixed << setprecision(2) << showpoint;
     double total = 0;
 
-    if (iTotalSmall > 0 || iTotalMedium > 0 || iTotalLarge > 0)
+    if (iTotalXXXS > 0 || iTotalSmall > 0 || iTotalMedium > 0 || iTotalLarge > 0)
 
     {
+        if (iTotalXXXS > 0)
+        {
+            cout << "The total number of XXXS Squirrel boards is " << iTotalXXXS
+                << " at a total of $" << iTotalXXXS * xxxsPrice << endl;
+        }
         if (iTotalSmall > 0)
         {
             cout << "The total number of small surfboards is " << iTotalSmall
@@ -251,7 +266,7 @@ void DisplayTotal(const int iTotalSmall, const int iTotalMedium, const int iTota
                 << " at a total of $" << iTotalLarge * largePrice << endl;
         }
 
-        total = iTotalSmall * smallPrice + iTotalMedium * mediumPrice + iTotalLarge * largePrice;
+        total = iTotalXXXS*xxxsPrice + iTotalSmall * smallPrice + iTotalMedium * mediumPrice + iTotalLarge * largePrice;
         cout << "Amount due: $" << total << endl << endl;
     }
     else
