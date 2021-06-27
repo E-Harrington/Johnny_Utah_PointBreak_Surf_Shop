@@ -3,11 +3,11 @@ Week05 Programming Assignment
 Eric Harrington
 
 ***********************Before main()********************************************
-1: Declare constant doubles for surfboard costs
-
-2: Declare prototype functions
+1: Declare prototype functions
 
 ***********************Within main()*********************************************
+2: Declare 3 const doubles for board prices
+
 3: Declare char variable userInput, which will be used as a sentinel variable; 
    initialize it to a character that is not 'Q'
 
@@ -65,12 +65,8 @@ Eric Harrington
 
 using namespace std;
 
-//Step 1
-const double SMALL_BOARD_PRICE = 175.00;
-const double MEDIUM_BOARD_PRICE = 190.00;
-const double LARGE_BOARD_PRICE = 200.00;
 
-//Step 2
+//Step 1
 /***********************************Prototypes***********************************************/
 
 //A function to display the title of the program
@@ -95,6 +91,11 @@ void ClosingMessage();
 
 int main()
 {
+    //Step2
+    const double SMALL_BOARD_PRICE = 175.00;
+    const double MEDIUM_BOARD_PRICE = 190.00;
+    const double LARGE_BOARD_PRICE = 200.00;
+
     //Step 3
     char userInput = 'y';
 
